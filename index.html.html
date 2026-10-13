@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Pro - 沉浸式降噪耳機 | 官方網站</title>
+    <meta name="description" content="Aura Pro 帶來前所未有的純粹音質與極致降噪體驗。立即探索我們的最新產品。">
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 FontAwesome 圖示 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入 Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- 自訂 Tailwind 設定 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#00d2ff', // 電光藍
+                        secondary: '#3a7bd5', // 深藍
+                        dark: '#0f172a', // 深灰背景
+                        darker: '#020617', // 更深背景
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* 自訂動畫與平滑滾動效果 */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* Tailwind darker */
+            color: #f8fafc;
+        }
+        
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 元素淡入動畫 */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero 圖片浮動效果 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating-img {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-primary selection:text-darker">
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold tracking-tighter flex items-center gap-2 group">
+                <i class="fa-solid fa-headphones-simple text-primary group-hover:scale-110 transition-transform"></i>
+                <span>Aura<span class="text-primary">Pro</span></span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex gap-8 items-center text-sm font-medium text-gray-300">
+                <a href="#features" class="hover:text-primary transition-colors hover:scale-105 transform">核心特點</a>
+                <a href="#experiences" class="hover:text-primary transition-colors hover:scale-105 transform">使用情境</a>
+                <a href="#pricing" class="hover:text-primary transition-colors hover:scale-105 transform">價格方案</a>
+                <a href="#specs" class="hover:text-primary transition-colors hover:scale-105 transform">技術規格</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:block">
+                <a href="#pricing" class="bg-primary hover:bg-white text-darker font-semibold py-2.5 px-6 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(0,210,255,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] transform hover:-translate-y-0.5">
+                    立即購買
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-dark/95 backdrop-blur-md border-b border-gray-800 py-4 flex flex-col items-center gap-4 shadow-xl">
+            <a href="#features" class="mobile-link text-gray-300 hover:text-primary py-2 font-medium">核心特點</a>
+            <a href="#experiences" class="mobile-link text-gray-300 hover:text-primary py-2 font-medium">使用情境</a>
+            <a href="#pricing" class="mobile-link text-gray-300 hover:text-primary py-2 font-medium">價格方案</a>
+            <a href="#pricing" class="bg-primary text-darker font-semibold py-2 px-8 rounded-full mt-2 w-[80%] text-center">立即購買</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 pb-12 overflow-hidden">
+        <!-- 背景光暈效果 -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center z-10 relative">
+            
+            <!-- 文字區塊 -->
+            <div class="text-center md:text-left space-y-6 md:space-y-8 fade-in-up mt-10 md:mt-0">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-800/50 border border-gray-700 text-sm font-medium text-gray-300 mb-2">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    全新一代旗艦上市
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
+                    聽見純粹，<br>
+                    <span class="gradient-text">隔絕喧囂。</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-400 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    Aura Pro 結合頂級聲學工程與業界領先的主動降噪技術，為您打造沉浸式的聽覺盛宴。無論何地，只有你和音樂。
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                    <a href="#pricing" class="bg-primary hover:bg-white text-darker font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(0,210,255,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.6)] flex items-center justify-center gap-2 group">
+                        預購享優惠 
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#video-demo" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 border border-gray-700 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play text-primary"></i> 觀看概念影片
+                    </a>
+                </div>
+                
+                <!-- 數據信任標章 -->
+                <div class="flex items-center justify-center md:justify-start gap-8 pt-8 border-t border-gray-800">
+                    <div class="text-left">
+                        <p class="text-2xl font-bold text-white">40<span class="text-primary text-sm font-normal">dB</span></p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider">深度降噪</p>
+                    </div>
+                    <div class="w-px h-8 bg-gray-800"></div>
+                    <div class="text-left">
+                        <p class="text-2xl font-bold text-white">36<span class="text-primary text-sm font-normal">hrs</span></p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider">總續航力</p>
+                    </div>
+                    <div class="w-px h-8 bg-gray-800"></div>
+                    <div class="text-left">
+                        <p class="text-2xl font-bold text-white">Hi-Res</p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider">無損音質</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 圖片區塊 -->
+            <div class="relative fade-in-up" style="transition-delay: 0.2s;">
+                <!-- 使用高質感的產品圖片佔位符，您可以替換為真實圖片 -->
+                <div class="relative z-10 floating-img">
+                    <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=1976&auto=format&fit=crop" alt="Aura Pro 高階無線耳機" class="w-full h-auto object-cover rounded-2xl shadow-2xl" style="filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));">
+                </div>
+                
+                <!-- 裝飾性元素 -->
+                <div class="absolute top-10 -right-5 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
+                <div class="absolute -bottom-10 left-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl"></div>
+                
+                <!-- 浮動資訊卡片 -->
+                <div class="absolute top-1/4 -left-8 bg-dark/80 backdrop-blur-md border border-gray-700 p-3 rounded-xl shadow-xl z-20 hidden lg:flex items-center gap-3 animate-pulse">
+                    <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                        <i class="fa-solid fa-wave-square"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">ANC 模式</p>
+                        <p class="text-sm font-bold text-white">已開啟</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- 滾動提示 -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-70">
+            <span class="text-xs text-gray-400 uppercase tracking-widest">Scroll</span>
+            <i class="fa-solid fa-chevron-down text-primary"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-dark relative">
+        <div class="container mx-auto px-6 md:px-12">
+            <!-- 標題 -->
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-sm font-bold text-primary uppercase tracking-widest mb-3">Innovation</h2>
+                <h3 class="text-3xl md:text-5xl font-bold mb-6">重新定義聆聽體驗</h3>
+                <p class="text-gray-400 text-lg">每一項細節都經過精心雕琢，只為滿足您對完美音質的渴望。</p>
+            </div>
+
+            <!-- 功能網格 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-2xl hover:bg-gray-800 transition-colors duration-300 fade-in-up group">
+                    <div class="w-14 h-14 bg-gray-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                        <i class="fa-solid fa-microphone-lines-slash text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white">自適應主動降噪</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">內建 6 個麥克風，即時偵測環境噪音並產生反向聲波，最高可消除 40dB 噪音，還你一片寧靜。</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-2xl hover:bg-gray-800 transition-colors duration-300 fade-in-up group" style="transition-delay: 0.1s;">
+                    <div class="w-14 h-14 bg-gray-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                        <i class="fa-solid fa-compact-disc text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white">高解析音質認證</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">搭載 40mm 鍍鈦振膜單體，支援 LDAC 編碼，頻率響應高達 40kHz，細節分毫畢現。</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-2xl hover:bg-gray-800 transition-colors duration-300 fade-in-up group" style="transition-delay: 0.2s;">
+                    <div class="w-14 h-14 bg-gray-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                        <i class="fa-solid fa-battery-full text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white">36 小時超長續航</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">單次充電可連續播放 36 小時。支援快充技術，充電 10 分鐘即可享受 5 小時音樂時光。</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-2xl hover:bg-gray-800 transition-colors duration-300 fade-in-up group" style="transition-delay: 0.3s;">
+                    <div class="w-14 h-14 bg-gray-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                        <i class="fa-solid fa-feather text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 text-white">雲朵般輕盈配戴</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">採用記憶海綿耳墊與輕量化合金材質，重量僅 250g，全天候配戴依然舒適無壓。</p>
+                </div>
+            </div>
+
+            <!-- 大型展示區 (Feature Highlight) -->
+            <div class="mt-24 grid md:grid-cols-2 gap-12 items-center bg-gray-900/30 rounded-3xl p-8 md:p-12 border border-gray-800/50 fade-in-up">
+                <div class="order-2 md:order-1 relative rounded-2xl overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=2064&auto=format&fit=crop" alt="耳機內部結構" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-8 h-1 bg-primary rounded-full"></span>
+                            <span class="text-xs uppercase tracking-widest text-primary font-bold">Acoustic Engineering</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-2">聲學大師的傑作</h4>
+                        <p class="text-gray-300 text-sm">精密設計的腔體結構，有效減少共振，讓低音深沉有力，高音清脆透亮。</p>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2 space-y-6">
+                    <h3 class="text-3xl md:text-4xl font-bold">專為挑剔的耳朵打造</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        我們邀請了十位葛萊美獎得主共同調音，確保 Aura Pro 能夠真實還原錄音室等級的音質。
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-check text-primary text-xs"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-white">智慧通透模式</h5>
+                                <p class="text-sm text-gray-500">不需摘下耳機，即可清晰聽見周圍環境聲與人聲。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-check text-primary text-xs"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-white">多點連線技術</h5>
+                                <p class="text-sm text-gray-500">可同時連接筆電與手機，無縫切換，工作娛樂不中斷。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-check text-primary text-xs"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-white">專屬 App 自訂 EQ</h5>
+                                <p class="text-sm text-gray-500">透過 Aura App，隨心所欲調整專屬於你的等化器設定。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="experiences" class="py-24 bg-darker relative">
+        <div class="container mx-auto px-6 md:px-12">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-sm font-bold text-primary uppercase tracking-widest mb-3">Lifestyle</h2>
+                <h3 class="text-3xl md:text-5xl font-bold mb-6">融入你的每一刻</h3>
+                <p class="text-gray-400 text-lg">無論身在何處，Aura Pro 都能為你創造專屬的個人空間。</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 情況 1 -->
+                <div class="relative group rounded-2xl overflow-hidden fade-in-up h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1517436073-3b1b1b229eb5?q=80&w=2069&auto=format&fit=crop" alt="專注工作" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 border border-white/20">
+                            <i class="fa-solid fa-laptop-code text-white"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-2">深度專注</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                            在喧鬧的辦公室或咖啡廳，開啟 ANC 模式，瞬間進入心流狀態，提升工作效率。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 情況 2 -->
+                <div class="relative group rounded-2xl overflow-hidden fade-in-up h-[400px]" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?q=80&w=1974&auto=format&fit=crop" alt="城市通勤" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 border border-white/20">
+                            <i class="fa-solid fa-train-subway text-white"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-2">寧靜通勤</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                            過濾捷運與街道的轟鳴聲，讓每日的通勤時光成為享受音樂與 Podcast 的最佳時刻。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 情況 3 -->
+                <div class="relative group rounded-2xl overflow-hidden fade-in-up h-[400px]" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1596484552993-9c8e9b6d8594?q=80&w=2002&auto=format&fit=crop" alt="放鬆娛樂" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 border border-white/20">
+                            <i class="fa-solid fa-couch text-white"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-2">極致影音</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                            支援空間音訊，在家看電影或玩遊戲時，體驗如臨現場的 3D 環繞音效震撼。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-dark relative border-t border-gray-900">
+        <!-- 裝飾背景 -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-sm font-bold text-primary uppercase tracking-widest mb-3">Pre-order Now</h2>
+                <h3 class="text-3xl md:text-5xl font-bold mb-6">選擇最適合你的 Aura</h3>
+                <p class="text-gray-400 text-lg">現在預購，即享早鳥專屬優惠與免運服務。</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-8 max-w-5xl mx-auto">
+                
+                <!-- 方案 1: 基礎版 -->
+                <div class="w-full lg:w-1/3 bg-gray-900/40 border border-gray-800 rounded-3xl p-8 flex flex-col fade-in-up hover:border-gray-600 transition-colors">
+                    <h4 class="text-2xl font-bold text-white mb-2">Aura Standard</h4>
+                    <p class="text-gray-400 text-sm mb-6">適合日常聆聽的純粹選擇</p>
+                    
+                    <div class="mb-6">
+                        <span class="text-4xl font-extrabold text-white">NT$ 6,990</span>
+                        <span class="text-gray-500 line-through ml-2 text-sm">NT$ 7,990</span>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-primary"></i> 30dB 主動降噪
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-primary"></i> 24 小時續航力
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-primary"></i> 藍牙 5.2 連線
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-500 opacity-50">
+                            <i class="fa-solid fa-xmark"></i> 不支援空間音訊
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-500 opacity-50">
+                            <i class="fa-solid fa-xmark"></i> 附贈標準收納袋
+                        </li>
+                    </ul>
+
+                    <button class="w-full py-3 px-6 rounded-full border border-gray-700 text-white font-semibold hover:bg-gray-800 transition-colors">
+                        選擇標準版
+                    </button>
+                </div>
+
+                <!-- 方案 2: Pro 版 (主推) -->
+                <div class="w-full lg:w-1/3 bg-gradient-to-b from-gray-800 to-gray-900 border-2 border-primary rounded-3xl p-8 flex flex-col relative transform lg:-translate-y-4 shadow-[0_0_30px_rgba(0,210,255,0.15)] fade-in-up" style="transition-delay: 0.1s;">
+                    <!-- 標籤 -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-darker font-bold px-4 py-1 rounded-full text-xs uppercase tracking-widest shadow-lg">
+                        Best Seller
+                    </div>
+
+                    <h4 class="text-2xl font-bold text-white mb-2">Aura Pro</h4>
+                    <p class="text-gray-400 text-sm mb-6">極致降噪與無損音質的完美結合</p>
+                    
+                    <div class="mb-6">
+                        <span class="text-5xl font-extrabold text-white">NT$ 9,990</span>
+                        <span class="text-gray-500 line-through ml-2 text-sm">NT$ 11,990</span>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-white font-medium">
+                            <i class="fa-solid fa-check text-primary"></i> 40dB 智慧自適應降噪
+                        </li>
+                        <li class="flex items-center gap-3 text-white font-medium">
+                            <i class="fa-solid fa-check text-primary"></i> 36 小時超長續航力
+                        </li>
+                        <li class="flex items-center gap-3 text-white font-medium">
+                            <i class="fa-solid fa-check text-primary"></i> 藍牙 5.3 多點連線
+                        </li>
+                        <li class="flex items-center gap-3 text-white font-medium">
+                            <i class="fa-solid fa-check text-primary"></i> 支援 3D 空間音訊
+                        </li>
+                        <li class="flex items-center gap-3 text-white font-medium">
+                            <i class="fa-solid fa-check text-primary"></i> 附贈頂級硬殼收納盒
+                        </li>
+                    </ul>
+
+                    <button class="w-full py-4 px-6 rounded-full bg-primary hover:bg-white text-darker font-bold transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" onclick="showMessage()">
+                        立即預購 Pro 版
+                    </button>
+                    <p class="text-center text-xs text-gray-500 mt-3">享有 30 天免費試聽退換服務</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ & Newsletter CTA -->
+    <section class="py-20 bg-darker border-t border-gray-900">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="max-w-4xl mx-auto bg-gray-900/50 border border-gray-800 rounded-3xl p-8 md:p-12 text-center fade-in-up">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4">想了解更多或有疑問？</h3>
+                <p class="text-gray-400 mb-8 max-w-xl mx-auto">訂閱我們的電子報，獲取最新產品資訊、韌體更新通知以及專屬會員優惠。</p>
+                
+                <form class="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto" onsubmit="event.preventDefault(); showMessage('感謝您的訂閱！我們將盡快寄送確認信給您。');">
+                    <input type="email" placeholder="輸入您的電子信箱" required class="flex-grow px-6 py-3 rounded-full bg-dark border border-gray-700 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+                    <button type="submit" class="bg-white hover:bg-gray-200 text-darker font-semibold py-3 px-8 rounded-full transition-colors whitespace-nowrap">
+                        立即訂閱
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darker pt-16 pb-8 border-t border-gray-900 text-sm">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                
+                <!-- Brand -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="#" class="text-2xl font-bold tracking-tighter flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-headphones-simple text-primary"></i>
+                        <span>Aura<span class="text-primary">Pro</span></span>
+                    </a>
+                    <p class="text-gray-500 mb-6 max-w-xs">
+                        致力於提供最高品質的個人音訊解決方案，讓聲音回歸純粹。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-darker transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-darker transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-darker transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-darker transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h5 class="text-white font-bold mb-4">產品</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">Aura Pro</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">Aura Standard</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">Aura Buds (即將推出)</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">配件商店</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-4">支援</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">產品指南</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">常見問題</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">保固服務</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">韌體下載</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-4">關於我們</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">品牌故事</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">新聞中心</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">聯絡我們</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors">加入團隊</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600">© 2026 Aura Acoustics Inc. All rights reserved.</p>
+                <div class="flex gap-4 text-gray-600">
+                    <a href="#" class="hover:text-white transition-colors">隱私權政策</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition-colors">服務條款</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition-colors">Cookie 設定</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 自訂訊息框 (取代 alert) -->
+    <div id="message-box" class="fixed bottom-5 right-5 bg-gray-900 border border-primary text-white p-4 rounded-xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-start gap-3 max-w-sm pointer-events-none">
+        <div class="text-primary mt-0.5"><i class="fa-solid fa-circle-info"></i></div>
+        <div>
+            <h4 class="font-bold text-sm mb-1" id="msg-title">系統提示</h4>
+            <p class="text-xs text-gray-300" id="msg-content">商品已加入購物車！</p>
+        </div>
+        <button onclick="hideMessage()" class="text-gray-500 hover:text-white ml-auto"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- JavaScript 邏輯 -->
+    <script>
+        // 導覽列滾動效果 (玻璃材質)
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('glass-nav');
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+            }
+        });
+
+        // 行動版選單切換
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        mobileBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            }
+        });
+
+        // 點擊行動版連結後關閉選單
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                isMenuOpen = false;
+            });
+        });
+
+        // 滾動動畫 (Intersection Observer)
+        const fadeElements = document.querySelectorAll('.fade-in-up');
+        
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        fadeElements.forEach(el => {
+            appearOnScroll.observe(el);
+        });
+
+        // 自訂訊息框功能
+        let msgTimeout;
+        function showMessage(text = '商品已加入購物車，將為您導向結帳頁面。', title = '通知') {
+            const msgBox = document.getElementById('message-box');
+            document.getElementById('msg-title').innerText = title;
+            document.getElementById('msg-content').innerText = text;
+            
+            msgBox.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            
+            clearTimeout(msgTimeout);
+            msgTimeout = setTimeout(hideMessage, 4000);
+        }
+
+        function hideMessage() {
+            const msgBox = document.getElementById('message-box');
+            msgBox.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        }
+    </script>
+</body>
+</html>
